@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>KSP Suicide Burn Calculator</title>
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+        
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -11,87 +12,142 @@
     <body>
         <div class="container">
             <header class="page-header">
-                <h1>Kerbal Space Program Suicide Burn Calculator</h1>
+                <h1>Suicide Burn Calculator <small>for Kerbal Space Program</small></h1>
                 <p>By <a href="https://pr0x1mas.github.io">Pr0x1mas</a></p>  
             </header>
-
-            <div class="alert alert-warning" role="alert"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>This website is not finished. It may not function as intended, or at all. Proceed at your own risk.</div>
-
+            
             <section>
-                <h2>What you'll need</h2>
-                <ul>
-                    <li>The planet you are trying to land on.</li>
-                    <li>Your current height <b>above sea level</b>.</li>
-                    <li>The height at which you wish to land (surface height).</li>
-                    <li>The amount of fuel you have.</li>
-                    <li>The <b>dry</b> mass of your craft (That's the mass of your craft without fuel).</li>
-                    <li>What engine you are using.</li>
-                </ul>
+                <div class="container-fluid">
+                    <div class="col-md-6">
+                        <h2>What you'll need</h2>
+                        <ul>
+                            <li>The planet you are trying to land on.</li>
+                            <li>Your current height <b>above sea level</b>.</li>
+                            <li>The height at which you wish to land (surface height).</li>
+                            <li>The amount of fuel you have.</li>
+                            <li>The <b>dry</b> mass of your craft (That's the mass of your craft without fuel).</li>
+                            <li>What engine you are using.</li>
+                        </ul>
+                    </div>
 
-                <h2>Assumptions</h2>
-                <ul>
-                    <li>Air resistance is negligible (if you want to do the aero maths for me go ahead).</li>
-                    <li>You only have one engine (I'll fix this at some point).</li>
-                    <li>You are prepared for the fact this is not entirely accurate.</li>
-                </ul>
+                    <div class="col-md-6">
+                        <h2>Assumptions <small>(features I haven't implemented yet)</small></h2>
+                        <ul>
+                            <li>There is no atmosphere. This applies to both engine ISP and drag.</li>
+                            <li>You are moving directly downwards, so have no horizontal velocity</li>
+                            <li>You only have one engine.</li>
+                        </ul>
+                    </div>
+                </div>
 
-                <h2>Disclaimer</h2>
-                <p>I am not responsible for dead kerbals, destroyed crafts, kraken attacks, or any other mishaps that may occur in-game. Don't be an idiot, make a quicksave before your burn.</p>
+                <div class="container-fluid">
+                    <h2>Disclaimer</h2>
+                    <p>
+                        This tool was developed entirely through my own knowledge and some research. It has had some testing on Minmus, and I'm pretty sure it works, but don't blame me if you kill Jeb on your 500+ hour career save. That said, if it doesn't work, please let me know by submitting <a href="https://github.com/Pr0x1mas/KSP-Suicide-Burn-Calculator/issues/new/choose">an issue on the Github Repo</a>.
+                    </p>
+                    <p>
+                        I am not responsible for dead kerbals, destroyed crafts, kraken attacks, or any other mishaps that may occur in-game. Don't be an idiot, make a quicksave before your burn.
+                    </p>
+                </div>
             </section>
 
             <hr>
 
             <section class="container">
-                <h2>Calculate it</h2>
+                <h2>Calculator</h2>
                 <form class="col-md-6">
-                    <label for="planet">Planet</label>
-                    <select class="form-control" id="planet">
-                        <option>Kerbin</option>
-                    </select>
+                    <h3>Mission Info</h3>
+                    <div class="form-group">
+                        <h4>Planet</h4>
+                        <small>I'll add a dropdown to just select a planet later. In the meantime, planet stats can be found <a href="https://wiki.kerbalspaceprogram.com/wiki/Kerbol_System">here</a>.</small>
+
+                        <br>
+
+                        <label for="planetRadius">Radius (m)</label>
+                        <input class="form-control" type="number" id="planetRadius">
+
+                        <br>
+
+                        <label for="surfaceHeight">Surface Height (m)</label>
+                        <input class="form-control" type="number" id="surfaceHeight">
+
+                        <br>
+
+                        <label for="planetMass">Mass (kg)</label>
+                        <input class="form-control" type="number" id="planetMass">
+                    </div>
+
+                    <div class="form-group">
+                        <h4>Craft</h4>
+                        <label for="startHeight">Height above planet (m)</label>
+                        <input class="form-control" type="number" id="startHeight">
+                        
+                        <br>
+
+                        <label for="fuelAmount">Fuel + Oxidiser (Units)</label>
+                        <input class="form-control" type="number" id="fuelAmount">
+
+                        <br>
+
+                        <label for="dryMass">Dry mass of craft (kg)</label>
+                        <input class="form-control" type="number" id="dryMass">
+
+                        <br>
+
+                        <label for="thrustLimit">Thrust limit</label>
+                        <input class="form-control" type="number" id="thrustLimit">
+                    </div>
+
+                    <div class="form-group">
+                        <h4>Engine</h4>
+                        <small>Multiple engine support will arrive at some point. You can find rocket engine stats <a href="https://wiki.kerbalspaceprogram.com/wiki/Parts/Engines#Liquid_Fuel_Engines">here</a>.</small>
+                        
+                        <br>
+
+                        <label for="engineThrust">Engine Thrust (N)</label>
+                        <input class="form-control" type="number" id="engineThrust">
+
+                        <br>
+
+                        <label for="engineISP">Engine I<sub>sp</sub> (s)</label>
+                        <input class="form-control" type="number" id="engineISP">
+                    </div>
 
                     <br>
 
-                    <label for="startHeight">Height above planet (m)</label>
-                    <input class="form-control" type="number" id="startHeight">
-                    
-                    <br>
-
-                    <label for="fuelAmount">Fuel + Oxidiser (Units)</label>
-                    <input class="form-control" type="number" id="fuelAmount">
-
-                    <br>
-
-                    <label for="dryMass">Dry mass of craft (kg)</label>
-                    <input class="form-control" type="number" id="dryMass">
-
-                    <br>
-
-                    <label for="engine">Engine</label>
-                    <select class="form-control" id="engine">
-                        <option>LV-1R "Spider" Liquid Fuel Engine</option>
-                    </select>
-
-                    <br>
-
-                    <button class="btn btn-primary"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Do the maths</button>
+                    <button onclick="calculate()" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Do the maths</button>
 
                 </form>
 
                 <br>
 
-                <div class="col-md-6 panel panel-default">
-                    <div class="panel-body">
-                        <p>output will go here</p>
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Result</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p id="calculatorOutput"></p>
+                        </div>
                     </div>
+                        
                 </div>
             </section>
 
             <hr>
 
             <footer>
-                <p>This is the footer</p>
+                <h2>Acknowledgements</h2>
+                <ul>
+                    <li>My dad, for suggesting that attempting to simply create a mathematical function for the whole thing was not necessarily the best way of doing things.</li>
+                    <li><a href="https://gist.github.com/vankasteelj">vankasteelj</a> for <a href="https://gist.github.com/vankasteelj/74ab7793133f4b257ea3">this handy function</a> to convert seconds to hours, minutes, seconds, and milliseconds.</li>
+                    <li><a href="https://github.com/alexmoon">alexmoon</a>, who's <a href="https://alexmoon.github.io/ksp/">Launch Window Planner</a> I shamelessly copied the UI design from to the point of using an older version of <a href="https://getbootstrap.com">Bootstrap</a> (3.4) for because I like how it looks.</li>
+                    <li>My friends Magnus and Mika, for somehow being interested as I explained the ups and downs of developing this.</li>
+                </ul>
             </footer>
         </div>
+
+        <script src="calculator.js"></script>
     </body>
 
 </html>

@@ -2,13 +2,12 @@ import datetime
 import sys
 
 print("-----")
-tolerance = 10
 startOffset = 0 #()
 
 startTime = 0 # (s)
-startHeight = 5 # (s)
+startHeight = 10000 # (s)
 surfaceHeight = 0 # (m)
-startThrottle = 0 #  (%)
+startThrottle = 1 #  (%)
 craftWetMass = 90840 # (kg)
 craftDryMass = 18840 # (kg)
 
