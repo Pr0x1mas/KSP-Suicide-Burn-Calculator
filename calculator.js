@@ -69,7 +69,7 @@ function calculate(){
     var gravityAcceleration;
     var fuelConsumption;
 
-    while (status != "landed") {
+    while (status != "landed") { // keep trying till we land
         status = "inFlight";
 
         time = 1;
@@ -114,25 +114,25 @@ function calculate(){
         incidents.push(status);
 
         if (status == "crashed" && incidents.length < 2){
+            calculatorOutput.innerHTML = "Your engine is not powerful enough to stop the craft in time.";
             break; // we crashed even by burning the whole time so suicide burn is impossible
         } else if (status == "crashed" && incidents.at(-2) == "outOfFuel") {
             precision = precision * 2; // we have gone past the correct burn time
         }
 
-        if (status == "crashed") {
-            startOffset = startOffset - (1/precision)*10;
-        } else if (status == "outOfFuel") {
-            startOffset = startOffset + (1/precision)*10;
-        } else if (status == "landed") {
-            break;
+        if (startOffset > time) {
+            calculatorOutput.innerHTML = "You do not have enough fuel to complete the burn.";
+            break; // we are crashing before we even start burning, if this has happened it's because we kept running out of fuel so there is not enough fuel regardless
         }
 
-    }
+        if (status == "crashed") { // I'll make it a switch at some point but I was copying python code across
+            startOffset = startOffset - (1/precision)*10; // If we crash, burn earlier
+        } else if (status == "outOfFuel") {
+            startOffset = startOffset + (1/precision)*10; // If we run out of fuel, burn later
+        } else if (status == "landed") {
+            calculatorOutput.innerHTML = "Start burning " + sec2time(startOffset) + " after drop"
+        }
 
-    if (status == "landed") {
-        calculatorOutput.innerHTML = "Start burning " + sec2time(startOffset) + " after drop"
-    } else {
-        calculatorOutput.innerHTML = "Suicide burn impossible!"
     }
 
 }
