@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+        <meta content="utf-8" http-equiv="encoding">
+
         <title>KSP Suicide Burn Calculator</title>
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-        
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -58,44 +64,53 @@
                 <form class="col-md-6">
                     <h3>Mission Info</h3>
                     <div class="form-group">
-                        <h4>Planet</h4>
+                        <h4>Celestial Body</h4>
                         <small>I'll add a dropdown to just select a planet later. In the meantime, planet stats can be found <a href="https://wiki.kerbalspaceprogram.com/wiki/Kerbol_System">here</a>.</small>
 
+                        <br>
+                        <label for="bodySelector">Celestial Body</label>
+                        <select required id="bodySelector" class="form-control">
+
+                        </select>
+
+                        <!--
                         <br>
 
                         <label for="planetRadius">Radius (m)</label>
                         <input class="form-control" type="number" id="planetRadius">
 
-                        <br>
-
-                        <label for="surfaceHeight">Surface Height (m)</label>
-                        <input class="form-control" type="number" id="surfaceHeight">
-
+                        
                         <br>
 
                         <label for="planetMass">Mass (kg)</label>
                         <input class="form-control" type="number" id="planetMass">
+                        -->
+
+                        <br>
+
+                        <label for="surfaceHeight">Surface Height (m)</label>
+                        <input value="0" required class="form-control" type="number" id="surfaceHeight">
                     </div>
 
                     <div class="form-group">
                         <h4>Craft</h4>
                         <label for="startHeight">Height above planet (m)</label>
-                        <input class="form-control" type="number" id="startHeight">
+                        <input value="0" required class="form-control" type="number" id="startHeight">
                         
                         <br>
 
                         <label for="fuelAmount">Fuel + Oxidiser (Units)</label>
-                        <input class="form-control" type="number" id="fuelAmount">
+                        <input value="0" required class="form-control" type="number" id="fuelAmount">
 
                         <br>
 
                         <label for="dryMass">Dry mass of craft (kg)</label>
-                        <input class="form-control" type="number" id="dryMass">
+                        <input value="0" required class="form-control" type="number" id="dryMass">
 
                         <br>
 
                         <label for="thrustLimit">Thrust limit</label>
-                        <input class="form-control" type="number" id="thrustLimit">
+                        <input value="0" required class="form-control" type="number" id="thrustLimit">
                     </div>
 
                     <div class="form-group">
@@ -105,12 +120,12 @@
                         <br>
 
                         <label for="engineThrust">Engine Thrust (N)</label>
-                        <input class="form-control" type="number" id="engineThrust">
+                        <input value="0" required class="form-control" type="number" id="engineThrust">
 
                         <br>
 
                         <label for="engineISP">Engine I<sub>sp</sub> (s)</label>
-                        <input class="form-control" type="number" id="engineISP">
+                        <input value="0" required class="form-control" type="number" id="engineISP">
                     </div>
 
                     <br>
@@ -150,6 +165,7 @@
         </div>
 
         <script src="calculator.js"></script>
+        <script src="data.js"></script>
     </body>
 
 </html>

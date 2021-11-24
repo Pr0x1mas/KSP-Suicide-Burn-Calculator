@@ -16,8 +16,10 @@ var calculatorOutput = document.getElementById("calculatorOutput");
 
 // Get all required input elements beforehand because apparently otherwise it causes performance issues and frankly lots of document.getElementById calls look messy
     // Planet info
-var planetRadiusInput = document.getElementById("planetRadius");
-var planetMassInput = document.getElementById("planetMass");
+
+var bodySelector = document.getElementById("bodySelector")
+//var planetRadiusInput = document.getElementById("planetRadius");
+//var planetMassInput = document.getElementById("planetMass");
 var surfaceHeightInput = document.getElementById("surfaceHeight");
 
     // Craft info
@@ -37,8 +39,12 @@ function calculate(){
     calculatorOutput.innerHTML = "Calculating..."
 
     // now we actually get the values from all those input boxes
-    var planetRadius = parseFloat(planetRadiusInput.value);
-    var planetMass = parseFloat(planetMassInput.value);
+
+    //var planetRadius = parseFloat(planetRadiusInput.value);
+    //var planetMass = parseFloat(planetMassInput.value);
+
+    var planetRadius = celestialBodies[bodySelector.value].radius;
+    var planetMass = celestialBodies[bodySelector.value].mass;
     var surfaceHeight = parseFloat(surfaceHeightInput.value);
 
     var startHeight = parseFloat(startHeightInput.value);
