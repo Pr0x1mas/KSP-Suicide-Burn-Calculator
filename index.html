@@ -16,11 +16,16 @@
     </head>
 
     <body>
+
         <div class="container">
             <header class="page-header">
                 <h1>Suicide Burn Calculator <small>for Kerbal Space Program</small></h1>
                 <p>By <a href="https://pr0x1mas.github.io">Pr0x1mas</a></p>  
             </header>
+
+            <noscript>
+                <div class="alert alert-danger" role="alert">This website requires JavaScript to be enabled in order to function.</div>
+            </noscript>
             
             <section>
                 <div class="container-fluid">
@@ -61,7 +66,7 @@
 
             <section class="container">
                 <h2>Calculator</h2>
-                <form class="col-md-6">
+                <form class="col-md-3">
                     <h3>Mission Info</h3>
                     <div class="form-group">
                         <h4>Celestial Body</h4>
@@ -88,29 +93,40 @@
 
                         <br>
 
-                        <label for="surfaceHeight">Surface Height (m)</label>
-                        <input value="0" required class="form-control" type="number" id="surfaceHeight">
+                        <label for="surfaceHeight">Surface Height</label>
+                        <div class="input-group">
+                            <input value="0" required class="form-control" type="number" id="surfaceHeight">
+                            <span class="input-group-addon">m</span>
+                        </div>
                     </div>
 
                     <div class="form-group">
                         <h4>Craft</h4>
-                        <label for="startHeight">Height above planet (m)</label>
-                        <input value="0" required class="form-control" type="number" id="startHeight">
-                        
+                        <label for="startHeight">Height above planet</label>
+                        <div class="input-group">
+                            <input min="1" value="1000" required class="form-control" type="number" id="startHeight">
+                            <span class="input-group-addon">m</span>
+                        </div>
                         <br>
 
-                        <label for="fuelAmount">Fuel + Oxidiser (Units)</label>
-                        <input value="0" required class="form-control" type="number" id="fuelAmount">
+                        <label for="fuelAmount">Fuel + Oxidiser</label>
+                        <div class="input-group">
+                            <input value="800" required class="form-control" type="number" id="fuelAmount">
+                            <span class="input-group-addon">Units</span>
+                        </div>
 
                         <br>
 
-                        <label for="dryMass">Dry mass of craft (kg)</label>
-                        <input value="0" required class="form-control" type="number" id="dryMass">
+                        <label for="dryMass">Dry mass of craft</label>
+                        <div class="input-group">
+                            <input min="0.1" value="1000" required class="form-control" type="number" id="dryMass">
+                            <span class="input-group-addon">kg</span>
+                        </div>
 
                         <br>
 
                         <label for="thrustLimit">Thrust limit</label>
-                        <input value="0" required class="form-control" type="number" id="thrustLimit">
+                        <input value="1.0" required class="form-control" type="number" id="thrustLimit">
                     </div>
 
                     <div class="form-group">
@@ -119,13 +135,18 @@
                         
                         <br>
 
-                        <label for="engineThrust">Engine Thrust (N)</label>
-                        <input value="0" required class="form-control" type="number" id="engineThrust">
-
+                        <label for="engineThrust">Engine Thrust</label>
+                        <div class="input-group">
+                            <input value="0" required class="form-control" type="number" id="engineThrust">
+                            <span class="input-group-addon">N</span>
+                        </div>
                         <br>
 
-                        <label for="engineISP">Engine I<sub>sp</sub> (s)</label>
-                        <input value="0" required class="form-control" type="number" id="engineISP">
+                        <label for="engineISP">Engine I<sub>sp</sub></label>
+                        <div class="input-group">
+                            <input min="1" value="1" required class="form-control" type="number" id="engineISP">
+                            <span class="input-group-addon">s</span>
+                        </div>
                     </div>
 
                     <br>
@@ -136,7 +157,7 @@
 
                 <br>
 
-                <div class="col-md-6">
+                <div class="col-md-9">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h3 class="panel-title">Result</h3>
