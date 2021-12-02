@@ -70,7 +70,7 @@
                     <h3>Mission Info</h3>
                     <div class="form-group">
                         <h4>Celestial Body</h4>
-                        <small>I'll add a dropdown to just select a planet later. In the meantime, planet stats can be found <a href="https://wiki.kerbalspaceprogram.com/wiki/Kerbol_System">here</a>.</small>
+                        <small>Planet data accurate as of 30/11/2021, from KSP Wiki.</small>
 
                         <br>
                         <label for="bodySelector">Celestial Body</label>
@@ -131,8 +131,15 @@
 
                     <div class="form-group">
                         <h4>Engine</h4>
-                        <small>Multiple engine support will arrive at some point. You can find rocket engine stats <a href="https://wiki.kerbalspaceprogram.com/wiki/Parts/Engines#Liquid_Fuel_Engines">here</a>.</small>
+                        <small>Engine data accurate as of 2020 according to the 'last modified' date on the <a href="http://burningsmell.org/images/ksp/ksp6.xls">spreadsheet I found on the internet</a>.</small>
                         
+                        <br>
+                        <label for="engineSelector">Engine</label>
+                        <select required id="engineSelector" class="form-control">
+
+                        </select>
+
+                        <!--
                         <br>
 
                         <label for="engineThrust">Engine Thrust</label>
@@ -147,6 +154,8 @@
                             <input min="1" value="1" required class="form-control" type="number" id="engineISP">
                             <span class="input-group-addon">s</span>
                         </div>
+
+                        -->
                     </div>
 
                     <br>
@@ -172,15 +181,20 @@
 
             <hr>
 
-            <footer>
-                <p>The source code for this website can be found on <a href="https://github.com/Pr0x1mas/KSP-Suicide-Burn-Calculator">GitHub</a>.</p>
+            <h2>How it works</h2>
+            <p>For a summary of how I got this working, you can read my <a href="https://pr0x1mas.github.io/project/2021/11/23/calculate-suicide-burns-in-ksp.html">blog post.</a></p>
+            <p>The source code for this website can be found on <a href="https://github.com/Pr0x1mas/KSP-Suicide-Burn-Calculator">GitHub</a>.</p>
 
+            <hr>
+
+            <footer>
                 <h2>Acknowledgements</h2>
                 <ul>
                     <li>My dad, for suggesting that attempting to simply create a mathematical function for the whole thing was not necessarily the best way of doing things.</li>
                     <li><a href="https://gist.github.com/vankasteelj">vankasteelj</a> for <a href="https://gist.github.com/vankasteelj/74ab7793133f4b257ea3">this handy function</a> to convert seconds to hours, minutes, seconds, and milliseconds.</li>
                     <li><a href="https://github.com/alexmoon">alexmoon</a>, who's <a href="https://alexmoon.github.io/ksp/">Launch Window Planner</a> I shamelessly copied the UI design from to the point of using an older version of <a href="https://getbootstrap.com">Bootstrap</a> (3.4) for because I like how it looks.</li>
                     <li>My friends Magnus and Mika, for somehow being interested as I explained the ups and downs of developing this.</li>
+                    <li><a href="https://burningsmell.org">burningsmell.org</a> for a spreadsheet of all engine data.</li>
                 </ul>
             </footer>
         </div>

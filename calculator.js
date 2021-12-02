@@ -29,8 +29,9 @@ var dryMassInput = document.getElementById("dryMass")
 var thrustLimitInput = document.getElementById("thrustLimit")
 
     // Engine info
-var engineThrustInput = document.getElementById("engineThrust")
-var engineISPInput = document.getElementById("engineISP")
+var engineSelector = document.getElementById("engineSelector")
+//var engineThrustInput = document.getElementById("engineThrust")
+//var engineISPInput = document.getElementById("engineISP")
 
 // Constant(s)
 var gravitationalConstant = 6.67E-11 // my main man newton coming in clutch with this absolute banger of a constant
@@ -52,8 +53,8 @@ function calculate(){
     var dryMass = parseFloat(dryMassInput.value);
     var thrustLimit = parseFloat(thrustLimitInput.value);
 
-    var engineThrust = parseFloat(engineThrustInput.value);
-    var engineISP = parseFloat(engineISPInput.value);
+    var engineThrust = engines[engineSelector.value].thrustVac;
+    var engineISP = engines[engineSelector.value].ISPVac;
 
     var craftMass;
     var fuelMass;
