@@ -13,6 +13,8 @@ function sec2time(timeInSeconds) { // https://gist.github.com/vankasteelj/74ab77
 // I decided to comment my code for a change. You're welcome
 
 var calculatorOutput = document.getElementById("calculatorOutput");
+var calculatorOutputContainer = document.getElementById("calculatorOutputContainer");
+
 
 // Get all required input elements beforehand because apparently otherwise it causes performance issues and frankly lots of document.getElementById calls look messy
     // Planet info
@@ -122,6 +124,7 @@ function calculate(){
 
         if (status == "crashed" && incidents.length < 2){
             calculatorOutput.innerHTML = "Your engine is not powerful enough to stop the craft in time.";
+            calculatorOutputContainer.setAttribute("class", "card bg-danger text-light")
             break; // we crashed even by burning the whole time so suicide burn is impossible
         } else if (status == "crashed" && incidents.at(-2) == "outOfFuel") {
             precision = precision * 2; // we have gone past the correct burn time
@@ -129,6 +132,7 @@ function calculate(){
 
         if (startOffset > time) {
             calculatorOutput.innerHTML = "You do not have enough fuel to complete the burn.";
+            calculatorOutputContainer.setAttribute("class", "card bg-danger text-light")
             break; // we are crashing before we even start burning, if this has happened it's because we kept running out of fuel so there is not enough fuel regardless
         }
 
@@ -138,6 +142,7 @@ function calculate(){
             startOffset = startOffset + (1/precision)*10; // If we run out of fuel, burn later
         } else if (status == "landed") {
             calculatorOutput.innerHTML = "Start burning " + sec2time(startOffset) + " after drop"
+            calculatorOutputContainer.setAttribute("class", "card bg-success text-light")
         }
 
     }

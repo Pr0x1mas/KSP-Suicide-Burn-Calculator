@@ -22,12 +22,12 @@
 
         <div class="container">
             <header class="pb-2 mt-4 mb-2 border-bottom">
-                <h1>Suicide Burn Calculator <small>for Kerbal Space Program</small></h1>
+                <h1>Suicide Burn Calculator <small class="text-black-50">for Kerbal Space Program</small></h1>
                 <p>By <a href="https://pr0x1mas.github.io">Pr0x1mas</a></p>  
             </header>
 
             <noscript>
-                <div class="alert alert-danger" role="alert">This website requires JavaScript to be enabled in order to function.</div>
+                <div class="alert alert-danger" role="alert"> <i class="bi bi-exclamation-triangle"></i> This website requires JavaScript to be enabled in order to function.</div>
             </noscript>
             
 
@@ -46,7 +46,7 @@
                     </div>
 
                     <div class="col-md-6">
-                        <h2>Assumptions <small>(features I haven't implemented yet)</small></h2>
+                        <h2>Assumptions <small class="text-black-50">(features I haven't implemented yet)</small></h2>
                         <ul>
                             <li>There is no atmosphere. This applies to both engine ISP and drag.</li>
                             <li>You are moving directly downwards, so have no horizontal velocity</li>
@@ -73,15 +73,15 @@
                 </div>
 
                 <div class="row card-body">
-                    <form class="col-md-3">
+                    <form class="col-md-3 mb-2">
                         <h3>Mission Info</h3>
                         <div class="form-group">
                             <h4>Celestial Body</h4>
-                            <small>Planet data accurate as of 30/11/2021, from KSP Wiki.</small>
+                            <small><i>Planet data accurate as of 30/11/2021, from KSP Wiki.</i></small>
 
                             <br>
-                            <label for="bodySelector">Celestial Body</label>
-                            <select required id="bodySelector" class="form-control">
+                            <label class="form-label" for="bodySelector">Celestial Body</label>
+                            <select required id="bodySelector" class="form-select">
 
                             </select>
 
@@ -100,23 +100,25 @@
 
                             <br>
 
-                            <label for="surfaceHeight">Surface Height</label>
+                            <label class="form-label" for="surfaceHeight">Surface Height</label>
                             <div class="input-group">
                                 <input value="0" required class="form-control" type="number" id="surfaceHeight">
                                 <span class="input-group-text">m</span>
                             </div>
                         </div>
 
+                        <br>
+
                         <div class="form-group">
                             <h4>Craft</h4>
-                            <label for="startHeight">Height above planet</label>
+                            <label class="form-label" for="startHeight">Height above planet</label>
                             <div class="input-group">
                                 <input min="1" value="1000" required class="form-control" type="number" id="startHeight">
                                 <span class="input-group-text">m</span>
                             </div>
                             <br>
 
-                            <label for="fuelAmount">Fuel + Oxidiser</label>
+                            <label class="form-label" for="fuelAmount">Fuel + Oxidiser</label>
                             <div class="input-group">
                                 <input value="800" required class="form-control" type="number" id="fuelAmount">
                                 <span class="input-group-text">Units</span>
@@ -124,7 +126,7 @@
 
                             <br>
 
-                            <label for="dryMass">Dry mass of craft</label>
+                            <label class="form-label" for="dryMass">Dry mass of craft</label>
                             <div class="input-group">
                                 <input min="0.1" value="1000" required class="form-control" type="number" id="dryMass">
                                 <span class="input-group-text">kg</span>
@@ -132,17 +134,19 @@
 
                             <br>
 
-                            <label for="thrustLimit">Thrust limit</label>
+                            <label class="form-label" for="thrustLimit">Thrust limit</label>
                             <input value="1.0" required class="form-control" type="number" id="thrustLimit">
                         </div>
 
+                        <br>
+
                         <div class="form-group">
                             <h4>Engine</h4>
-                            <small>Engine data accurate as of 2020 according to the 'last modified' date on the <a href="http://burningsmell.org/images/ksp/ksp6.xls">spreadsheet I found on the internet</a>.</small>
+                            <small><i>Engine data accurate as of 2020 according to the 'last modified' date on the <a href="http://burningsmell.org/images/ksp/ksp6.xls">spreadsheet I found on the internet</a>.</i></small>
                             
                             <br>
-                            <label for="engineSelector">Engine</label>
-                            <select required id="engineSelector" class="form-control">
+                            <label class="form-label" for="engineSelector">Engine</label>
+                            <select required id="engineSelector" class="form-select">
 
                             </select>
 
@@ -172,7 +176,7 @@
                     </form>
 
                     <div class="col-md-9">
-                        <div class="card bg-primary text-light">
+                        <div style="transition: background-color 0.5s;" id="calculatorOutputContainer" class="card bg-light text-dark">
                             <div class="card-header">
                                 <h3 class="card-title">Result</h3>
                             </div>
@@ -190,7 +194,7 @@
 
                 <h2>How it works</h2>
                 <p>For a summary of how I got this working, you can read my <a href="https://pr0x1mas.github.io/project/2021/11/23/calculate-suicide-burns-in-ksp.html">blog post.</a></p>
-                <p>The source code for this website can be found on <a href="https://github.com/Pr0x1mas/KSP-Suicide-Burn-Calculator">GitHub</a>.</p>
+                <p>The source code for this website can be found on <a href="https://github.com/Pr0x1mas/KSP-Suicide-Burn-Calculator"><i class="bi bi-github"></i> GitHub</a>.</p>
 
             
                 <hr>
@@ -200,7 +204,7 @@
                     <ul>
                         <li>My dad, for suggesting that attempting to simply create a mathematical function for the whole thing was not necessarily the best way of doing things.</li>
                         <li><a href="https://gist.github.com/vankasteelj">vankasteelj</a> for <a href="https://gist.github.com/vankasteelj/74ab7793133f4b257ea3">this handy function</a> to convert seconds to hours, minutes, seconds, and milliseconds.</li>
-                        <li><a href="https://github.com/alexmoon">alexmoon</a>, who's <a href="https://alexmoon.github.io/ksp/">Launch Window Planner</a> I shamelessly copied the UI design from to the point of using an older version of <a href="https://getbootstrap.com">Bootstrap</a> (3.4) for because I like how it looks.</li>
+                        <li><a href="https://github.com/alexmoon">alexmoon</a>, who's <a href="https://alexmoon.github.io/ksp/">Launch Window Planner</a> I shamelessly copied the UI design from before deciding to switch to a modern version of Bootstrap.</li>
                         <li>My friends Magnus and Mika, for somehow being interested as I explained the ups and downs of developing this.</li>
                         <li><a href="https://burningsmell.org">burningsmell.org</a> for a spreadsheet of all engine data.</li>
                     </ul>
