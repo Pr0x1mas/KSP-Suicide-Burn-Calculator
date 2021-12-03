@@ -55,8 +55,8 @@ function calculate(){
     var dryMass = parseFloat(dryMassInput.value);
     var thrustLimit = parseFloat(thrustLimitInput.value);
 
-    var engineThrust = engines[engineSelector.value].thrustVac;
-    var engineISP = engines[engineSelector.value].ISPVac;
+    var engineThrust = parseFloat(engines[engineSelector.value].thrustVac) * 1000; // KN to N
+    var engineISP = parseFloat(engines[engineSelector.value].ISPVac);
 
     var craftMass;
     var fuelMass;
@@ -141,7 +141,7 @@ function calculate(){
         } else if (status == "outOfFuel") {
             startOffset = startOffset + (1/precision)*10; // If we run out of fuel, burn later
         } else if (status == "landed") {
-            calculatorOutput.innerHTML = "Start burning " + sec2time(startOffset) + " after drop"
+            calculatorOutput.innerHTML = "Start burning " + sec2time(startOffset) + " after drop. <br> Burn for " + sec2time(time - startOffset) + ".";
             calculatorOutputContainer.setAttribute("class", "card bg-success text-light")
         }
 
